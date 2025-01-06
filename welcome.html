@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="welcome-container">
+      <h1 id="welcome-message">Selamat datang, [Nama akun]</h1>
+      <p>Anda telah berhasil login ke sistem.</p>
+      <button class="logout-button" id="logout-button">Logout</button>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name") || "Guest";
+
+      document.getElementById(
+        "welcome-message"
+      ).textContent = `Selamat datang, ${name}`;
+
+      // Tombol Logout
+      document.getElementById("logout-button").addEventListener("click", () => {
+        localStorage.removeItem("rememberedEmail");
+
+        window.location.href = "login.html";
+      });
+    </script>
+  </body>
+</html>
